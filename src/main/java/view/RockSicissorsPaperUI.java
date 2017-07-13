@@ -15,13 +15,11 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Notification.Type;
-
-import controller.RockSiccorsPaperController;
-
 import com.vaadin.ui.RadioButtonGroup;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
+import controller.RockSiccorsPaperController;
 import model.Result;
 import model.Sign;
 
@@ -75,10 +73,10 @@ public class RockSicissorsPaperUI extends UI {
 						String uri = new String(URL + choice);
 						Result returns = rt.postForObject(uri, choice, Result.class);
 						if (returns.isDraw()) {
-							Notification.show("Draw: " + returns.getResultChoice(), Type.TRAY_NOTIFICATION);
+							Notification.show("Draw ", "" + returns.getDrawChoice(), Type.TRAY_NOTIFICATION);
 						} else {
-							Notification.show("Winner: " + returns.getResultName() + "->\n\nUser choice: "
-									+ returns.getUserChoice() + "\n\nComputer choice: " + returns.getComputerChoice(),
+							Notification.show(returns.getWinnerName() + " beats " + returns.getLoserName(),
+									returns.getWinnerChoice() + " >> " + returns.getLoserChoice(),
 									Type.TRAY_NOTIFICATION);
 						}
 					} catch (Exception e) {

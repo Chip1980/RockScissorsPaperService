@@ -6,7 +6,7 @@ import com.vaadin.ui.Notification;
 import com.vaadin.ui.Notification.Type;
 
 import model.Computer;
-import model.Draw;
+import model.IChoice;
 import model.Result;
 import model.Sign;
 import model.User;
@@ -20,21 +20,31 @@ public class RockScissorsPaperComperator {
 		Result result = new Result();
 		try {
 			if (!user.getChoice().equals(computer.getChoice())) {
+				IChoice winner = null;
 				switch ((Sign) user.getChoice()) {
 				case ROCK:
-					result.setResult((computer.getChoice().equals(Sign.SCISSORS)) ? user : computer);
+					winner = (computer.getChoice().equals(Sign.SCISSORS)) ? user : computer;
 					break;
 				case SCISSORS:
-					result.setResult((computer.getChoice().equals(Sign.ROCK)) ? computer : user);
+					winner = (computer.getChoice().equals(Sign.ROCK)) ? computer : user;
 					break;
 				case PAPER:
-					result.setResult((computer.getChoice().equals(Sign.ROCK)) ? user : computer);
+					winner = (computer.getChoice().equals(Sign.ROCK)) ? user : computer;
 					break;
 				default:
 					break;
 				}
+				IChoice loser;
+				if (winner.equals(computer)) {
+					loser = user;
+				} else {
+					loser = computer;
+				}
+
+				result.setWinner(winner);
+				result.setLoser(loser);
 			} else {
-				result.setResult(new Draw(computer.getChoice()));
+				result.setDrawChoice(user);
 			}
 		} catch (JSONException e) {
 			Notification.show("Exception: " + e, Type.ERROR_MESSAGE);

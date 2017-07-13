@@ -10,7 +10,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import model.Computer;
-import model.Draw;
 import model.Result;
 import model.Sign;
 import model.User;
@@ -37,11 +36,7 @@ public class RockScissorsPaperTest {
 
 			Result result = RockScissorsPaperComperator.compare(userMock, computerMock);
 
-			Result expected = new Result();
-			Draw draw = new Draw(Sign.SCISSORS);
-			expected.setResult(draw);
-
-			assertTrue(expected.equals(result));
+			assertTrue(result.isDraw());
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -54,12 +49,12 @@ public class RockScissorsPaperTest {
 			Mockito.when(computerMock.getChoice()).thenReturn(Sign.PAPER);
 
 			Result expected = new Result();
-			expected.setResult(userMock);
+			expected.setWinner(userMock);
 
 			Result result = RockScissorsPaperComperator.compare(userMock, computerMock);
 
-			assertEquals(expected, result);
-		} catch (JSONException e) {
+			assertEquals(expected.getWinnerChoice(), result.getWinnerChoice());
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -73,10 +68,10 @@ public class RockScissorsPaperTest {
 			Result result = RockScissorsPaperComperator.compare(userMock, computerMock);
 
 			Result expected = new Result();
-			expected.setResult(computerMock);
+			expected.setWinner(computerMock);
 
-			assertEquals(expected, result);
-		} catch (JSONException e) {
+			assertEquals(expected.getWinnerChoice(), result.getWinnerChoice());
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
