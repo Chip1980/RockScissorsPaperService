@@ -22,6 +22,7 @@ import com.vaadin.ui.VerticalLayout;
 import controller.RockSiccorsPaperController;
 import model.Result;
 import model.Sign;
+import model.User;
 
 /*
  * 
@@ -38,6 +39,7 @@ public class RockSicissorsPaperUI extends UI {
 	private RadioButtonGroup<Sign> userChoice = new RadioButtonGroup<>("User Selection");
 	private Label computerChoice = new Label("Automatic Selection");
 	private Button shuffle;
+	private User user;
 
 	@Autowired
 	public RockSicissorsPaperUI() {
@@ -52,6 +54,8 @@ public class RockSicissorsPaperUI extends UI {
 
 		userChoice.addValueChangeListener(event -> {
 			choice = event.getValue();
+			user = new User();
+			user.setUser(choice);
 		});
 
 		computerChoice.setIcon(VaadinIcons.DESKTOP);
@@ -71,7 +75,7 @@ public class RockSicissorsPaperUI extends UI {
 						rt.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 						rt.getMessageConverters().add(new StringHttpMessageConverter());
 						String uri = new String(URL + choice);
-						Result returns = rt.postForObject(uri, choice, Result.class);
+						Result returns = rt.postForObject(uri, user, Result.class);
 						if (returns.isDraw()) {
 							Notification.show("Draw ", "" + returns.getDrawChoice(), Type.TRAY_NOTIFICATION);
 						} else {

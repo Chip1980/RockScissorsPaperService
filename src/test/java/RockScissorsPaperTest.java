@@ -31,8 +31,8 @@ public class RockScissorsPaperTest {
 	@Test
 	public void testDrawResult() {
 		try {
-			Mockito.when(userMock.getChoice()).thenReturn(Sign.SCISSORS);
-			Mockito.when(computerMock.getChoice()).thenReturn(Sign.SCISSORS);
+			Mockito.when(userMock.getChoice()).thenReturn(Sign.SCISSORS.name());
+			Mockito.when(computerMock.getChoice()).thenReturn(Sign.SCISSORS.name());
 
 			Result result = RockScissorsPaperComperator.compare(userMock, computerMock);
 
@@ -45,8 +45,8 @@ public class RockScissorsPaperTest {
 	@Test
 	public void testUserWins() {
 		try {
-			Mockito.when(userMock.getChoice()).thenReturn(Sign.SCISSORS);
-			Mockito.when(computerMock.getChoice()).thenReturn(Sign.PAPER);
+			Mockito.when(userMock.getChoice()).thenReturn(Sign.SCISSORS.name());
+			Mockito.when(computerMock.getChoice()).thenReturn(Sign.PAPER.name());
 
 			Result expected = new Result();
 			expected.setWinner(userMock);
@@ -62,8 +62,8 @@ public class RockScissorsPaperTest {
 	@Test
 	public void testComputerWins() {
 		try {
-			Mockito.when(userMock.getChoice()).thenReturn(Sign.PAPER);
-			Mockito.when(computerMock.getChoice()).thenReturn(Sign.SCISSORS);
+			Mockito.when(userMock.getChoice()).thenReturn(Sign.PAPER.name());
+			Mockito.when(computerMock.getChoice()).thenReturn(Sign.SCISSORS.name());
 
 			Result result = RockScissorsPaperComperator.compare(userMock, computerMock);
 

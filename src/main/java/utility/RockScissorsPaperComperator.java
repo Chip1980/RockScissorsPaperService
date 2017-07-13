@@ -21,14 +21,14 @@ public class RockScissorsPaperComperator {
 		try {
 			if (!user.getChoice().equals(computer.getChoice())) {
 				IChoice winner = null;
-				switch ((Sign) user.getChoice()) {
-				case ROCK:
+				switch (user.getChoice()) {
+				case "ROCK":
 					winner = (computer.getChoice().equals(Sign.SCISSORS)) ? user : computer;
 					break;
-				case SCISSORS:
+				case "SCISSORS":
 					winner = (computer.getChoice().equals(Sign.ROCK)) ? computer : user;
 					break;
-				case PAPER:
+				case "PAPER":
 					winner = (computer.getChoice().equals(Sign.ROCK)) ? user : computer;
 					break;
 				default:

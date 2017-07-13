@@ -12,13 +12,17 @@ public class User extends JSONObject implements IChoice, Serializable {
 	public static final String CHOICE = "choice";
 	private static final long serialVersionUID = -4362308654114446906L;
 
-	public User(Sign choice) {
-		put(CHOICE, choice);
+	public User() {
+
+	}
+
+	public void setUser(Sign choice) {
+		put(CHOICE, choice.name());
 		put(NAME, getClass().getSimpleName());
 	}
 
-	public Sign getChoice() {
-		return (Sign) get(CHOICE);
+	public String getChoice() {
+		return (String) get(CHOICE);
 	}
 
 	@Override

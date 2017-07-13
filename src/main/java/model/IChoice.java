@@ -6,6 +6,6 @@ public interface IChoice {
 
 	public String getName();
 
-	public Sign getChoice();
+	public String getChoice();
 
 }

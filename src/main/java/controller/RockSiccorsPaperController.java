@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import model.Computer;
 import model.Result;
-import model.Sign;
 import model.User;
 import utility.RockScissorsPaperComperator;
 
@@ -23,13 +22,13 @@ public class RockSiccorsPaperController {
 	 */
 	@RequestMapping(value = "/{choice}", method = RequestMethod.POST)
 	@ResponseBody
-	public Result shuffle(@PathVariable("choice") String id, @RequestBody Sign choice) {
+	public Result shuffle(@PathVariable("choice") String id, @RequestBody User choice) {
 		Result result = new Result();
 		try {
-			User user = new User(choice);
+			// User user = new User(choice);
 			Computer computer = new Computer();
 
-			result = RockScissorsPaperComperator.compare(user, computer);
+			result = RockScissorsPaperComperator.compare(choice, computer);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

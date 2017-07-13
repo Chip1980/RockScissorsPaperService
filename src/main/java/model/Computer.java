@@ -12,7 +12,7 @@ public class Computer extends JSONObject implements IChoice, Serializable {
 	private static final long serialVersionUID = 7279757819714242717L;
 
 	public Computer() {
-		put(CHOICE, Sign.randomize());
+		put(CHOICE, Sign.randomize().name());
 		put(NAME, getClass().getSimpleName());
 	}
 
@@ -22,8 +22,8 @@ public class Computer extends JSONObject implements IChoice, Serializable {
 	}
 
 	@Override
-	public Sign getChoice() {
-		return (Sign) get(CHOICE);
+	public String getChoice() {
+		return (String) get(CHOICE);
 	}
 
 }

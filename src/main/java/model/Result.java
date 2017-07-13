@@ -24,13 +24,13 @@ public class Result extends JSONObject implements Serializable {
 		put(WINNERCHOICE, winner.getChoice());
 	}
 
-	public Object getWinnerChoice() {
-		Object retValue = get(WINNERCHOICE);
+	public String getWinnerChoice() {
+		String retValue = (String) get(WINNERCHOICE);
 		return retValue;
 	}
 
-	public Object getWinnerName() throws Exception {
-		Object retValue = get(WINNERNAME);
+	public String getWinnerName() throws Exception {
+		String retValue = (String) get(WINNERNAME);
 		return retValue;
 	}
 
@@ -39,13 +39,13 @@ public class Result extends JSONObject implements Serializable {
 		put(LOSERCHOICE, loser.getChoice());
 	}
 
-	public Object getLoserChoice() {
-		Object retValue = get(LOSERCHOICE);
+	public String getLoserChoice() {
+		String retValue = (String) get(LOSERCHOICE);
 		return retValue;
 	}
 
-	public Object getLoserName() {
-		Object retValue = get(LOSERNAME);
+	public String getLoserName() {
+		String retValue = (String) get(LOSERNAME);
 		return retValue;
 	}
 
@@ -53,8 +53,8 @@ public class Result extends JSONObject implements Serializable {
 		put(DRAWCHOICE, draw.getChoice());
 	}
 
-	public Object getDrawChoice() throws Exception {
-		Object retValue = get(DRAWCHOICE);
+	public String getDrawChoice() throws Exception {
+		String retValue = (String) get(DRAWCHOICE);
 		return retValue;
 	}
 
